@@ -1,5 +1,3 @@
-package cs245PA05; //REMEMBER TO GET RID OF THIS
-
 //@author: Anthony Panisales
 
 public class BSTree {
@@ -92,7 +90,6 @@ public class BSTree {
 		delete(data, root);
 	}
 	
-	//UPDATE ROOT SOMEHOW
 	public BSTNode delete(String data, BSTNode node) {
 		//Base Case. Data not found in tree
 		if (node == null) {
@@ -153,50 +150,32 @@ public class BSTree {
 		return removeSmallest(node.getLeft());
 	}
 	
-	public int countNodes(BSTNode node) {
-		if (node == null) {
-			return 0;
-		} else {
-			return 1 + countNodes(node.getLeft()) + countNodes(node.getRight());
-		}
-	}
-	
 	public String toStringInOrder() {
 		String inOrder = "";
-		return toStringInOrder(inOrder, root);
+		return toStringInOrder(inOrder, root).trim();
 	}
 	
 	public String toStringInOrder(String inOrder, BSTNode node) {
 		if (node == null) {
 			return "";
 		} else {
-			if (node.getData().compareTo("Wilson") == 0) { //If at last node
-				inOrder += toStringInOrder(inOrder, node.getLeft()) + 
-						node.getData() + toStringInOrder(inOrder, node.getRight());
-			} else {
-				inOrder += toStringInOrder(inOrder, node.getLeft()) + 
-						node.getData() + " " + toStringInOrder(inOrder, node.getRight());
-			}
+			inOrder += toStringInOrder(inOrder, node.getLeft()) + 
+					node.getData() + " " + toStringInOrder(inOrder, node.getRight());
 			return inOrder;
 		}
 	}
 	
 	public String toStringPreOrder() {
 		String preOrder = "";
-		return toStringPreOrder(preOrder, root);
+		return toStringPreOrder(preOrder, root).trim();
 	}
 	
 	public String toStringPreOrder(String preOrder, BSTNode node) {
 		if (node == null) {
 			return "";
 		} else {
-			if (node.getData().compareTo("Wilson") == 0) { //If at last node
-				preOrder += node.getData() + toStringPreOrder(preOrder, node.getLeft()) 
-						+ toStringPreOrder(preOrder, node.getRight());
-			} else {
-				preOrder += node.getData() + " " + toStringPreOrder(preOrder, node.getLeft()) + 
-						toStringPreOrder(preOrder, node.getRight());
-			}
+			preOrder += node.getData() + " " + toStringPreOrder(preOrder, node.getLeft()) + 
+					toStringPreOrder(preOrder, node.getRight());
 			return preOrder;
 		}
 	}
